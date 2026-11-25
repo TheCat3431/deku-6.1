@@ -1,0 +1,21 @@
+name: ProjectDeku
+options:
+  deploymentTarget:
+    iOS: '16.0'
+targets:
+  ProjectDeku:
+    type: application
+    platform: iOS
+    sources: [Sources]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.projectdeku.hero
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: PROJECT DEKU
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.healthcare-fitness
+        SWIFT_VERSION: '5.0'
+        TARGETED_DEVICE_FAMILY: '1'
+        MARKETING_VERSION: '6.0'
+        CURRENT_PROJECT_VERSION: '1'
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES

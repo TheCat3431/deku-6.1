@@ -1,0 +1,26 @@
+workflows:
+  ios-testflight:
+    name: PROJECT DEKU TestFlight
+    instance_type: mac_mini_m2
+    max_build_duration: 45
+    integrations:
+      app_store_connect: DEKU_ASC
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.projectdeku.hero
+      xcode: latest
+    scripts:
+      - name: Generate Xcode project
+        script: |
+          brew list xcodegen || brew install xcodegen
+          xcodegen generate
+          xcode-project use-profiles
+      - name: Build signed IPA
+        script: xcode-project build-ipa --project ProjectDeku.xcodeproj --scheme ProjectDeku
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true

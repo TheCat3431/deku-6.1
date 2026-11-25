@@ -1,0 +1,13 @@
+import Foundation
+let state = State()
+precondition(state.missions.count == 325)
+precondition(Set(state.missions.map(\.id)).count == 325)
+precondition(state.weeks.count == 40)
+precondition(Seed.books.count == 13)
+precondition(Seed.positions.count == 7)
+precondition(Seed.formation(0).count == 6)
+let bytes = try JSONEncoder().encode(state)
+let restored = try JSONDecoder().decode(State.self, from: bytes)
+precondition(restored.missions.count == 325)
+precondition(restored.schedule.count == 7)
+print("OK: 325 IDs únicos, 40 semanas, 13 cadernos, formação e round-trip JSON")
